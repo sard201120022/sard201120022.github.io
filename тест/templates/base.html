@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>{% block title %}{% endblock %}</title>
+		<meta name="description" content="Мы создаем ботов в Telegram" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.20/dist/lenis.css" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}" />
+		{% block extra %}{% endblock %}
+		<script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+	</head>
+	<body>
+		<div class="topbar">
+			<a href="/">BOTSINUZB</a>
+			<a class="telegram_channel_link" href="https://t.me/botsinuzb" target="_blank"><img src="{{ url_for('static', filename='icons/telegram.svg') }}" />Наш телеграм канал</a>
+		</div>
+		{% block content %}
+		
+		{% endblock %}
+		<script src="{{ url_for('static', filename='script.js') }}" async defer></script>
+	</body>
+</html>

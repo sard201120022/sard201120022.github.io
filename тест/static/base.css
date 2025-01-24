@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Onest;
+	text-decoration: none;
+}
+
+.topbar {
+	position: fixed;
+	display: flex;
+	max-width: 100%;
+	width: 1280px;
+	margin: 5px 0 0 0;
+	left: 50%;
+	transform: translate(-50%, 0);
+	justify-content: space-between;
+	background: #00000080;
+	border: solid #00000050 2px;
+	border-radius: 20px;
+	backdrop-filter: blur(20px);
+}
+
+.topbar a {
+	height: 100%;
+	font-size: 20px;
+	font-weight: 300;
+	padding: 20px 20px;
+	color: #ffffff;
+}
+
+.telegram_channel_link {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+
+.telegram_channel_link img {
+	margin-top: -1px;
+}

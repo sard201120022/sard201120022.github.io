@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Панель админа</title>
+		<meta name="description" content="Мы создаем ботов в Telegram" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.20/dist/lenis.css" />
+		<link rel="stylesheet" href="/static/base.css" />
+		<style>
+			.container {
+				margin: 0 auto;
+				width: 50%;
+			}
+
+			.form_container {
+				display: flex;
+				flex-direction: column;
+			}
+
+			@media screen and (max-width: 800px) {
+				.container {
+					width: 95%;
+				}
+			}
+		</style>
+		<script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			{% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %}
+			<div class="flash {{ category }}">{{ message }}</div>
+			{% endfor %} {% endif %} {% endwith %} {% if not session.get('auth') %}
+			<h1>Admin Login</h1>
+			<form method="post">
+				<label for="code">Введите код доступа:</label>
+				<input type="password" id="code" name="code" placeholder="Введите код" required />
+				<button type="submit">Войти</button>
+			</form>
+			{% else %}
+			<h1>Добавить бота</h1>
+			<form class="form_container" method="post" enctype="multipart/form-data">
+				<label for="name">Имя бота:</label>
+				<input type="text" id="name" name="name" placeholder="Введите имя" required />
+
+				<label for="description">Описание бота:</label>
+				<textarea id="description" name="description" placeholder="Введите описание" required></textarea>
+
+				<label for="username">Юзернейм бота:</label>
+				<input type="text" id="username" name="username" placeholder="Введите юзернейм" required />
+
+				<label for="pfp">Изображение профиля:</label>
+				<input type="file" id="pfp" name="pfp" accept="image/*" required />
+
+				<label for="screenshots">Скриншоты:</label>
+				<input type="file" id="screenshots" name="screenshots" accept="image/*" multiple required />
+
+				<button type="submit">Добавить бота</button>
+			</form>
+			<div class="logout">
+				<a href="{{ url_for('logout') }}">Выйти</a>
+			</div>
+			{% endif %}
+		</div>
+		<script src="/static/script.js" async defer></script>
+	</body>
+</html>
